@@ -1,0 +1,34 @@
+<div class="example-container mat-elevation-z8">
+  <div class="example-loading-shade"
+       *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <a mat-flat-button color="primary" (click)="logout()">Logout</a>
+  </div>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="data" class="example-table">
+
+      <!-- Product ID Column -->
+      <ng-container matColumnDef="prodName">
+        <th mat-header-cell *matHeaderCellDef>Product Name</th>
+        <td mat-cell *matCellDef="let row">{{row.prodName}}</td>
+      </ng-container>
+
+      <!-- ISBN Column -->
+      <ng-container matColumnDef="prodDesc">
+        <th mat-header-cell *matHeaderCellDef>Product Description</th>
+        <td mat-cell *matCellDef="let row">{{row.prodDesc}}</td>
+      </ng-container>
+
+      <!-- Title Column -->
+      <ng-container matColumnDef="prodPrice">
+        <th mat-header-cell *matHeaderCellDef>Product Price</th>
+        <td mat-cell *matCellDef="let row">{{row.prodPrice}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>
